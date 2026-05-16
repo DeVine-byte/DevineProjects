@@ -5,7 +5,7 @@ from fastapi.middleware.wsgi import WSGIMiddleware
 from Keyholder.app import app as keyholder_app
 
 # IMPORT FASTAPI APP
-from Expense_tracker.main import app as expense_tracker_app
+from Expense-tracker.main import app as expense_tracker_app
 
 # MAIN APP
 app = FastAPI(
