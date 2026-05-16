@@ -68,19 +68,26 @@ async def startup():
 # =========================
 # STATIC (SAFE)
 # ========================
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 frontend_path = os.path.join(BASE_DIR, "frontend")
+index_path = os.path.join(frontend_path, "index.html")
 
+# Serve static files
 if os.path.exists(frontend_path):
-    app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+    app.mount(
+        "/static",
+        StaticFiles(directory=frontend_path),
+        name="static"
+    )
 
+# Serve frontend
 @app.get("/")
 def serve_frontend():
-    if os.path.exists("frontend/index.html"):
-        return FileResponse("frontend/index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
     return {"status": "API running"}
-
 
 # =========================
 # CSRF
