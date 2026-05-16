@@ -18,3 +18,4 @@ bcrypt
 python-jose
 jinja2
 aiofiles
+pycryptodome
