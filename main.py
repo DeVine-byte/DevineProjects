@@ -26,11 +26,11 @@ async def root():
 # MOUNT FLASK APP
 app.mount(
     "/Keyholder",
-    WSGIMiddleware(Keyholder_app)
+    WSGIMiddleware(keyholder_app)
 )
 
 # MOUNT FASTAPI APP
 app.mount(
     "/finance",
-    Expense_tracker_app
+    expense_tracker_app
 )
