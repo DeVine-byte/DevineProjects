@@ -1,35 +1,20 @@
-from fastapi import FASTAPI
+from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 
-# IMPORT FLASK APP
-from Keyholder.app import app as keyholder_app
-
-# IMPORT FASTAPI APP
+from keyholder.app import app as keyholder_app
 from expense_tracker.main import app as expense_tracker_app
 
-# MAIN APP
-app = FastAPI(
-    title="Combined Multi-App Service"
-)
+app = FastAPI()
 
-# ROOT ROUTE
 @app.get("/")
 async def root():
-    return {
-        "message": "All services running",
-        "services": {
-            "Keyholder": "/Keyholder",
-            "Expense Tracker": "/finance"
-        }
-    }
+    return {"message": "All services running"}
 
-# MOUNT FLASK APP
 app.mount(
-    "/Keyholder",
+    "/keyholder",
     WSGIMiddleware(keyholder_app)
 )
 
-# MOUNT FASTAPI APP
 app.mount(
     "/finance",
     expense_tracker_app
