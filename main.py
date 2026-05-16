@@ -18,19 +18,19 @@ async def root():
     return {
         "message": "All services running",
         "services": {
-            "Keyholder": "/keyholder",
+            "Keyholder": "/Keyholder",
             "Expense Tracker": "/finance"
         }
     }
 
 # MOUNT FLASK APP
 app.mount(
-    "/keyholder",
-    WSGIMiddleware(keyholder_app)
+    "/Keyholder",
+    WSGIMiddleware(Keyholder_app)
 )
 
 # MOUNT FASTAPI APP
 app.mount(
     "/finance",
-    expense_tracker_app
+    Expense_tracker_app
 )
