@@ -2,10 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 
 # IMPORT FLASK APP
-from keyholder.app import app as keyholder_app
+from Keyholder.app import app as keyholder_app
 
 # IMPORT FASTAPI APP
-from expense_tracker.main import app as expense_tracker_app
+from Expense_tracker.main import app as expense_tracker_app
 
 # MAIN APP
 app = FastAPI(
