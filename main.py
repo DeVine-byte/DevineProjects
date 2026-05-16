@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 
-# IMPORT FLASK APPS
-from blog_app.app import app as blog_flask_app
-from password_manager.app import app as password_flask_app
+# IMPORT FLASK APP
+from keyholder.app import app as keyholder_app
 
 # IMPORT FASTAPI APP
-from finance_api.main import app as finance_fastapi_app
+from expense_tracker.main import app as expense_tracker_app
 
 # MAIN APP
 app = FastAPI(
@@ -19,18 +18,19 @@ async def root():
     return {
         "message": "All services running",
         "services": {
-            "Keyholder": "/Keyholder",
-            "Expense-tracker": "/finance"
+            "Keyholder": "/keyholder",
+            "Expense Tracker": "/finance"
         }
     }
 
-# MOUNT FLASK APPS
-
-
+# MOUNT FLASK APP
 app.mount(
-    "/Keyholder",
-    WSGIMiddleware(Keyholder)
+    "/keyholder",
+    WSGIMiddleware(keyholder_app)
 )
 
 # MOUNT FASTAPI APP
-app.mount("/finance", Expense-tracker)
+app.mount(
+    "/finance",
+    expense_tracker_app
+)
