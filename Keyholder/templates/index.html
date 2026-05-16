@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeyHolder | Secure Password Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="home">
+  <!-- Header -->
+  <header class="navbar">
+    <h1 class="logo">KeyHolder</h1>
+
+    <!-- Navigation Menu -->
+    <nav id="navMenu" class="nav-links">
+      <button class="cta-btn authBtn">Login / Sign Up</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h2>Protect Your Online World<br>With <span>KeyHolder</span></h2>
+      <p>
+        A modern password manager designed to secure your digital identity with
+        zero-knowledge encryption and seamless access.
+      </p>
+      <button class="cta-btn authBtn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Why Choose KeyHolder?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Bank-Level Encryption</h3>
+        <p>Your password is encrypted before it ever leaves your device. Your secrets stay yours.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Instant Password Management</h3>
+        <p>Easily save, organize, search, and autofill all your login credentials.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Access Anywhere</h3>
+        <p>Manage your vault securely across your devices anytime, anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explanation Section -->
+  <section class="info-section">
+    <h2>What is a Password Manager?</h2>
+    <p>
+      A password manager is a secure vault that stores and protects all your passwords.
+      Instead of remembering dozens of logins, you only need one master password
+      — the key to everything.
+    </p>
+
+    <h2>Why It Matters</h2>
+    <p>
+      Weak or reused passwords are the #1 cause of data breaches and identity theft.
+      KeyHolder helps keep your online life protected from cyber threats.
+    </p>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>Take Control of Your Digital Security</h2>
+    <p>Create your account today and secure your online life with KeyHolder.</p>
+
+    <button class="cta-btn authBtn">Create Account</button>
+    <p>Sponsored by: </p>
+    <a class="sponsor" href="https://divosec.onrender.com/">
+      <img src="{{ url_for('static', filename='images/tagline.png') }}" alt="Sponsor Photo">
+    </a>
+  </section>
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <div id="strengthBar" style="margin-top:5px; font-weight:bold;"></div>
+        <p id="strengthText"></p>
+        <button type="submit" id="loginBtn">Login</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="form">
+        <h2>Register</h2>
+        <input type="text" id="registerUsername" placeholder="Username" required />
+        <input type="email" id="registerEmail" placeholder="Email" required />
+        <input type="password" id="registerPassword" placeholder="Password" required />
+        <div id="strengthBar" style="margin-top:5px; font-weight:bold;"></div>
+        <p id="strengthText"></p>
+        <button type="submit" id="registerBtn">Register</button>
+      </form>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
