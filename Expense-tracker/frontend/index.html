@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<h1>Expense Dashboard</h1>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal hidden">
+    <div class="modal-content">
+        <h3>Login / Signup</h3>
+        <input id="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <button onclick="signup()">Signup</button>
+    </div>
+</div>
+
+<div class="dashboard">
+
+    <!-- LEFT -->
+    <div class="panel">
+
+        <div class="card highlight">
+            <h2>₦<span id="balance">0</span></h2>
+            <p>Current Balance</p>
+        </div>
+
+        <div class="card">
+            <h3>Add Income</h3>
+            <input type="number" id="incomeAmount" placeholder="amount" required>
+            <input type="text" id="incomeDesc" placeholder="description" required>
+            <button onclick="addIncome()">Add</button>
+        </div>
+
+        <div class="card">
+            <h3>Add Expense</h3>
+            <input type="number" id="expenseAmount" placeholder="amount" required>
+
+            <select id="category">
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="rent">Rent</option>
+                <option value="family">Family</option>
+                <option value="misc">Misc</option>
+            </select>
+
+            <input type="text" id="expenseDesc" placeholder="description" required>
+            <button onclick="addExpense()">Add</button>
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="panel">
+
+        <div class="card">
+            <h3>Reports</h3>
+            <button onclick="loadReport('weekly')">Weekly</button>
+            <button onclick="loadReport('monthly')">Monthly</button>
+
+            <p>Income: ₦<span id="totalIncome">0</span></p>
+            <p>Expense: ₦<span id="totalExpense">0</span></p>
+        </div>
+
+        <div class="card">
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <div class="card">
+            <canvas id="barChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card">
+    <h3>Recent Transactions</h3>
+
+    <div class="table-header">
+        <span>Date</span>
+        <span>Type</span>
+        <span>Amount</span>
+        <span>Category</span>
+        <span>Description</span>
+    </div>
+
+    <div id="transactionList"></div>
+</div>
+
+<label for="monthFilter"><strong>Download monthly transactions</strong></label>
+<p>Select Month: </p><input type="month" id="monthFilter">
+<button onclick="exportMonthly()">Download</button>
+    
+<div id="printSection" class="print-only"></div>
+<div id="toast-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/app.js"></script>
+
+</body>
+</html>
+
