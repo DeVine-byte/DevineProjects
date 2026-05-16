@@ -20,11 +20,11 @@ from fastapi_cache.backends.inmemory import InMemoryBackend
 from bson import ObjectId
 from bson.errors import InvalidId
 
-from database import users_collection, transactions_collection
+from .database import users_collection, transactions_collection
 
-from models import UserCreate, UserLogin, IncomeCreate, ExpenseCreate
+from .models import UserCreate, UserLogin, IncomeCreate, ExpenseCreate
 
-from auth import (
+from .auth import (
     hash_password,
     verify_password,
     create_access_token,
@@ -32,7 +32,7 @@ from auth import (
     decode_token,
 )
 
-from services.report_service import generate_summary
+from .services.report_service import generate_summary
 
 
 # =========================
