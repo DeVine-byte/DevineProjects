@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from .database import transactions_collection
+from expense_tracker.database import transactions_collection
 
 
 # =========================
