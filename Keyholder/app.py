@@ -12,10 +12,10 @@ from functools import wraps
 from datetime import datetime, timedelta
 from bson import ObjectId
 
-from config import Config
-from db import users, saved_accounts, session_tokens, login_attempts
-from token_utils import generate_token
-from utils import double_encrypt, double_decrypt
+from .config import Config
+from .db import users, saved_accounts, session_tokens, login_attempts
+from .token_utils import generate_token
+from .utils import double_encrypt, double_decrypt
 
 # Logging
 logger = logging.getLogger("password_manager")
