@@ -678,7 +678,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    window.location.href = "/";
+    window.location.href = "/keyholder";
 
   });
 
