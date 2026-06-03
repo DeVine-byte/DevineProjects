@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------
   // API Endpoint
   // ---------------------------
-  const API_URL = "/api/auth";
+  const API_URL = "/keyholder/api/auth";
 
   /* ============================================================
      🔐 PASSWORD SHOW/HIDE (LOGIN + REGISTER)
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await response.json();
 
     if (data.success) {
-      window.location.href = "/dashboard";
+      window.location.href = "/keyholder/dashboard";
     } else {
       alert(data.message || "Registration failed.");
     }
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = await response.json();
 
     if (data.success) {
-      window.location.href = "/dashboard";
+      window.location.href = "/keyholder/dashboard";
     } else {
       alert(data.message || "Login failed.");
     }
