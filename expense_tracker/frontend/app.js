@@ -1,8 +1,5 @@
-// ========================
-// ENV SAFE API BASE URL
-// ========================
-const API = window.location.origin;
-
+const APP_PREFIX = "/finance";
+const API = `${window.location.origin}${APP_PREFIX}`;
 let pieChart, barChart;
 
 // ========================
