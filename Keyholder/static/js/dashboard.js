@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
 
   }
+  const API_BASE = "/keyholder";
 
   /* ============================================================
      CSRF TOKEN
@@ -112,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const res = await fetch("/api/auth/me", {
+      const res = await fetch(`${API_BASE}/api/auth/me`, {
         method: "GET",
         credentials: "include"
       });
@@ -145,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const res = await fetch("/api/password/list", {
+      const res = await fetch(`${API_BASE}/api/password/list`, {
         method: "GET",
         credentials: "include"
       });
@@ -350,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (editMode) {
 
-        const res = await fetch(`/api/password/edit/${editAccountId}`, {
+        const res = await fetch(`${API_BASE}/api/password/edit/${editAccountId}`, {
           method: "PUT",
           credentials: "include",
           headers: {
@@ -387,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
          CREATE
       ========================= */
 
-      const res = await fetch("/api/password/add", {
+      const res = await fetch(`${API_BASE}/api/password/add`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -444,7 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-      const res = await fetch(`/api/password/show/${id}`, {
+      const res = await fetch(`${API_BASE}/api/password/show/${id}`, {
         method: "GET",
         credentials: "include"
       });
@@ -481,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const res = await fetch(`/api/password/show/${id}`, {
+      const res = await fetch(`${API_BASE}/api/password/show/${id}`, {
         method: "GET",
         credentials: "include"
       });
@@ -555,7 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const res = await fetch(`/api/password/delete/${deleteId}`, {
+      const res = await fetch(`${API_BASE}/api/password/delete/${deleteId}`, {
         method: "DELETE",
         credentials: "include",
         headers: {
@@ -663,7 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      await fetch("/api/auth/logout", {
+      await fetch(`${API_BASE}/api/auth/logout`, {
         method: "POST",
         credentials: "include",
         headers: {
