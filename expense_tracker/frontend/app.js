@@ -130,7 +130,7 @@ async function login() {
             body: JSON.stringify({ email, password })
         });
 
-        document.getElementByID("strike").innerText=showToast("Login successful", "success");
+        showToast("Login successful", "success");
 
         await loadAll();
         showApp();
