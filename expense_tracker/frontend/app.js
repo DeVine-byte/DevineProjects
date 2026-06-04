@@ -107,12 +107,10 @@ async function checkAuth() {
 // ========================
 function showAuthModal() {
     document.getElementById("authModal").classList.remove("hidden");
-    document.getElementById("app").classList.add("hidden");
 }
 
 function showApp() {
     document.getElementById("authModal").classList.add("hidden");
-    document.getElementById("app").classList.remove("hidden");
 }
 
 // ========================
