@@ -1,120 +1,96 @@
-
-const dropZone =
-    document.getElementById("dropZone");
-
+// Elements
 const fileInput =
     document.getElementById("videoInput");
 
 const selectedFile =
     document.getElementById("selectedFile");
 
-const videoInfo =
-    document.getElementById("videoInfo");
+const form =
+    document.getElementById("compressForm");
 
-dropZone.addEventListener(
-    "click",
-    () => fileInput.click()
-);
+const loadingModal =
+    document.getElementById("loadingModal");
 
-dropZone.addEventListener(
-    "dragover",
-    e => {
-        e.preventDefault();
-        dropZone.style.background =
-            "rgba(255,255,255,.25)";
-    }
-);
+const compressBtn =
+    document.getElementById("compressBtn");
 
-dropZone.addEventListener(
-    "dragleave",
-    () => {
-        dropZone.style.background =
-            "rgba(255,255,255,.1)";
-    }
-);
 
-dropZone.addEventListener(
-    "drop",
-    e => {
 
-        e.preventDefault();
+// Display selected filename
 
-        fileInput.files =
-            e.dataTransfer.files;
 
-        updateFileInfo(
-            e.dataTransfer.files[0]
-        );
-    }
-);
+if (fileInput && selectedFile) {
 
-fileInput.addEventListener(
-    "change",
-    () => {
-        updateFileInfo(
-            fileInput.files[0]
-        );
-    }
-);
+    fileInput.addEventListener(
+        "change",
+        function () {
 
-function updateFileInfo(file) {
+            if (
+                this.files &&
+                this.files.length > 0
+            ) {
 
-    if (!file) return;
+                const file =
+                    this.files[0];
 
-    selectedFile.textContent =
-        file.name;
+                const size =
+                    (
+                        file.size /
+                        1024 /
+                        1024
+                    ).toFixed(2);
 
-    let size =
-        (file.size / 1024 / 1024)
-        .toFixed(2);
+                selectedFile.innerHTML =
+                    `
+                    <strong>Selected:</strong>
+                    ${file.name}
+                    <br>
 
-    videoInfo.style.display =
-        "block";
-
-    videoInfo.innerHTML = `
-        <strong>Name:</strong> ${file.name}<br>
-        <strong>Size:</strong> ${size} MB
-    `;
-}
-
-document
-.getElementById("compressForm")
-.addEventListener(
-"submit",
-function(){
-
-    document
-    .getElementById("loadingModal")
-    .classList.add("is-active");
-
-    let progress =
-        document.getElementById(
-            "progressBar"
-        );
-
-    let text =
-        document.getElementById(
-            "progressText"
-        );
-
-    let value = 0;
-
-    const interval =
-        setInterval(() => {
-
-            value += 2;
-
-            progress.value =
-                value;
-
-            text.innerHTML =
-                `Processing... ${value}%`;
-
-            if(value >= 95){
-                clearInterval(interval);
+                    <strong>Size:</strong>
+                    ${size} MB
+                    `;
             }
 
-        },500);
+        }
+    );
 
-});
+}
 
+
+
+// Show loading modal
+
+
+if (form) {
+
+    form.addEventListener(
+        "submit",
+        function () {
+
+            if (
+                loadingModal
+            ) {
+
+                loadingModal
+                    .classList
+                    .add(
+                        "is-active"
+                    );
+
+            }
+
+            if (
+                compressBtn
+            ) {
+
+                compressBtn.disabled =
+                    true;
+
+                compressBtn.textContent =
+                    "Compressing...";
+            }
+
+        }
+    );
+
+}
