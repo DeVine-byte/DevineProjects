@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Compressor</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    >
+
+    <style>
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        .main-card {
+            margin-top: 3rem;
+        }
+
+        .logo-icon {
+            font-size: 4rem;
+        }
+
+        .file-name {
+            margin-top: 0.5rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+
+        <div class="columns is-centered">
+            <div class="column is-6">
+
+                <div class="box main-card">
+
+                    <div class="has-text-centered mb-5">
+                        <div class="logo-icon">🎬</div>
+                        <h1 class="title">
+                            Video Compressor
+                        </h1>
+                        <p class="subtitle">
+                            Compress videos to your desired file size
+                        </p>
+                    </div>
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="notification is-danger">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <form
+                        action="/compress"
+                        method="POST"
+                        enctype="multipart/form-data"
+                        id="compressForm"
+                    >
+
+                        <!-- Video Upload -->
+                        <div class="field">
+                            <label class="label">
+                                Select Video
+                            </label>
+
+                            <div class="control">
+                                <input
+                                    id="videoInput"
+                                    class="input"
+                                    type="file"
+                                    name="video"
+                                    accept="video/*"
+                                    required
+                                >
+                            </div>
+
+                            <p
+                                id="selectedFile"
+                                class="file-name"
+                            ></p>
+                        </div>
+
+                        <!-- Target Size -->
+                        <div class="field">
+                            <label class="label">
+                                Target Size (MB)
+                            </label>
+
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="number"
+                                    name="target_size"
+                                    value="100"
+                                    min="1"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Output Filename -->
+                        <div class="field">
+                            <label class="label">
+                                Output Filename
+                            </label>
+
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="text"
+                                    name="output_name"
+                                    placeholder="my_compressed_video"
+                                    required
+                                >
+                            </div>
+
+                            <p class="help">
+                                .mp4 will be added automatically if omitted.
+                            </p>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="field mt-5">
+                            <button
+                                id="compressBtn"
+                                class="button is-primary is-fullwidth"
+                                type="submit"
+                            >
+                                Compress Video
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Loading Modal -->
+<div id="loadingModal" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box has-text-centered">
+
+            <button
+                class="button is-loading is-large is-white"
+                disabled
+            ></button>
+
+            <h2 class="title is-4 mt-5">
+                Compressing Video...
+            </h2>
+
+            <p class="mb-4">
+                Your video is being processed.
+            </p>
+
+            <p class="has-text-grey">
+                This may take a few minutes depending on the video size.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Display selected filename
+    document
+        .getElementById("videoInput")
+        .addEventListener("change", function () {
+
+            const fileName =
+                this.files.length > 0
+                    ? this.files[0].name
+                    : "";
+
+            document.getElementById(
+                "selectedFile"
+            ).textContent = fileName;
+        });
+
+    // Show loading modal on submit
+    document
+        .getElementById("compressForm")
+        .addEventListener("submit", function () {
+
+            document
+                .getElementById("loadingModal")
+                .classList.add("is-active");
+
+            const btn =
+                document.getElementById("compressBtn");
+
+            btn.disabled = true;
+            btn.textContent = "Compressing...";
+        });
+</script>
+
+</body>
+</html>
