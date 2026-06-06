@@ -46,12 +46,11 @@
                     {% endwith %}
 
                     <form
-                        action="/compress"
+                        action="{{ url_for('compress') }}"
                         method="POST"
                         enctype="multipart/form-data"
                         id="compressForm"
                     >
-
                         <!-- Video Upload -->
                         <div class="field">
                             <label class="label">
