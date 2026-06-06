@@ -14,7 +14,7 @@ from flask import (
 
 from werkzeug.utils import secure_filename
 
-from compress import compress_video
+from .compress import compress_video
 
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
