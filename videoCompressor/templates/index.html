@@ -9,26 +9,11 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
     >
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='/style.css') }}"
+    >
 
-    <style>
-        body {
-            background: #f5f7fa;
-            min-height: 100vh;
-        }
-
-        .main-card {
-            margin-top: 3rem;
-        }
-
-        .logo-icon {
-            font-size: 4rem;
-        }
-
-        .file-name {
-            margin-top: 0.5rem;
-            color: #666;
-        }
-    </style>
 </head>
 <body>
 
@@ -177,39 +162,7 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Display selected filename
-    document
-        .getElementById("videoInput")
-        .addEventListener("change", function () {
-
-            const fileName =
-                this.files.length > 0
-                    ? this.files[0].name
-                    : "";
-
-            document.getElementById(
-                "selectedFile"
-            ).textContent = fileName;
-        });
-
-    // Show loading modal on submit
-    document
-        .getElementById("compressForm")
-        .addEventListener("submit", function () {
-
-            document
-                .getElementById("loadingModal")
-                .classList.add("is-active");
-
-            const btn =
-                document.getElementById("compressBtn");
-
-            btn.disabled = true;
-            btn.textContent = "Compressing...";
-        });
-</script>
+<script src="{{ url_for('static', filename='/app.js') }}"></script>
 
 </body>
 </html>
