@@ -1,0 +1,68 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        -45deg,
+        #667eea,
+        #764ba2,
+        #6a11cb,
+        #2575fc
+    );
+
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.main-card {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    color: white;
+}
+
+.main-card .label,
+.main-card .title,
+.main-card .subtitle {
+    color: white;
+}
+
+.input {
+    border-radius: 12px;
+}
+
+.button {
+    border-radius: 12px;
+    transition: all .3s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.logo-icon {
+    font-size: 4rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
