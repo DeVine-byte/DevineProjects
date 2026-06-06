@@ -3,7 +3,7 @@ from fastapi.middleware.wsgi import WSGIMiddleware
 
 from Keyholder.app import app as keyholder_app
 from expense_tracker.main import app as expense_tracker_app
-from video_compressor.app import app as vid_app
+from videoCompressor.app import app as vid_app
 
 app = FastAPI()
 
