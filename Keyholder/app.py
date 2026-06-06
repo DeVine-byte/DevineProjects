@@ -535,6 +535,6 @@ def dashboard():
 
 if __name__ == "__main__":
     _ensure_indexes()
-    # Do not run debug=True in production
+    # Debug=True
     app.run()
                             
