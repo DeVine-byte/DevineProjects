@@ -22,5 +22,5 @@ app.mount(
 )
 app.mount(
     "/videoCompressor",
-    vid_app
+    WSGIMiddleware(vid_app)
 )
