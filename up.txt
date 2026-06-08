@@ -1,0 +1,35 @@
+.
+├── Keyholder
+│   ├── __init__.py
+│   ├── app.py
+│   ├── config.py
+│   ├── db.py
+│   ├── static
+│   ├── templates
+│   ├── token_utils.py
+│   └── utils.py
+├── README.md
+├── expense_tracker
+│   ├── H.yxt
+│   ├── __init__.py
+│   ├── auth.py
+│   ├── database.py
+│   ├── expenses.db
+│   ├── frontend
+│   ├── main.py
+│   ├── models.py
+│   ├── requirements.txt
+│   ├── schemas.py
+│   └── services
+├── main.py
+├── requirements.txt
+├── up.txt
+└── videoCompressor
+    ├── __init__.py
+    ├── app.py
+    ├── compress.py
+    ├── m.txt
+    ├── static
+    └── templates
+
+10 directories, 23 files
