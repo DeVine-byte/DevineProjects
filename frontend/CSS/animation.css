@@ -52,3 +52,26 @@
     animation: floatBlob3 18s ease infinite;
 }
 
+@keyframes floatBlob1 {
+    50% {
+        transform:
+            translate(100px,80px)
+            scale(1.2);
+    }
+}
+
+@keyframes floatBlob2 {
+    50% {
+        transform:
+            translate(-100px,50px)
+            scale(.8);
+    }
+}
+
+@keyframes floatBlob3 {
+    50% {
+        transform:
+            translate(50px,-100px)
+            scale(1.1);
+    }
+}
