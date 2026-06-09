@@ -62,3 +62,38 @@ const apps = [
     }
 
 ];
+
+const appGrid =
+document.getElementById("apps-grid");
+
+apps.forEach(app => {
+
+    appGrid.innerHTML += `
+
+    <article class="app-card reveal">
+
+        <div class="app-icon">
+            ${app.icon}
+        </div>
+
+        <span class="category">
+            ${app.category}
+        </span>
+
+        <h3>
+            ${app.name}
+        </h3>
+
+        <p>
+            ${app.description}
+        </p>
+
+        <a href="${app.url}">
+            Launch App →
+        </a>
+
+    </article>
+
+    `;
+
+});
