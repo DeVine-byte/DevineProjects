@@ -100,24 +100,31 @@
 .app-card {
 
     background:
-        var(--card-bg);
+        rgba(255,255,255,.05);
+
+    backdrop-filter:
+        blur(20px);
 
     border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    padding:
-        2rem;
-
-    box-shadow:
-        var(--shadow);
+        1px solid rgba(255,255,255,.08);
 
     transition:
-        var(--transition);
+        .4s ease;
+
+    overflow: hidden;
+
+    position: relative;
 }
 
+.app-card:hover {
+
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.4);
+}
 .app-icon {
     font-size: 3rem;
 
