@@ -3,134 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Utility Hub | DevineByte</title>
 
-    <link rel="stylesheet" href="/static/CSS/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <div class="background-blobs">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
 
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    UtilityHub
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#apps">Apps</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="https://github.com/">GitHub</a></li>
-                </ul>
-                <button class="menu-btn">
-                    ☰
-                </button>
-            </nav>
-        </div>
-    </header>
-    <div class="cursor"></div>
-    <div class="spotlight"></div>
 
-    <main>
-        
-        <section class="hero reveal">
-            <div class="container">
-            <div class="hero-content">
-
-                <h1>
-                    Free Community Tools
-                </h1>
-
-                <p>
-                    Secure your data.
-                    Manage your finances.
-                    Optimize your media.
-                </p>
-
-                <button class="hero-btn">
-                    Explore Apps
-                </button>
-
-            </div>
-            </div>
-
-        </section>
-        <div class="stats">
-            <div class="counter" data-target="3">
-                0
-            </div>
-            <div class="counter" data-target="100">
-                0
-            </div>
-        </div>
-
-        <section id="apps" class="apps reveal">
-            <div class="container">
-                <h2>
-                    Featured Applications
-                </h2>
-                <div class="apps-grid"
-                    id="app-grid">
-                </div>
-            </div>
-            <input type="text" id="search"
-                placeholder="Search tools..."
-            >
-
-        </section>
-
-        <section class="future-apps reveal">
-            <div class="container">
-            <h2>
-                More Tools Coming
-            </h2>
-
-            <div class="future-grid">
-
-                <div class="coming-soon">
-                  <h2>LINE</h2>
-                  <p>cloud based Team Communication system</p>
-                </div>
-
-            </div>
-            </div>
-
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-
-            <h2>
-                About This Hub
-            </h2>
-
-            <p>
-                A growing collection of free web applications built to help
-                individuals, creators, and small businesses solve everyday
-                problems.
-            </p>
-            </div>
-
-        </section>
-
-    </main>
     <div id="loader">
         <div class="loader-logo">
             UtilityHub
         </div>
     </div>
 
-    <footer>
+
+
+    <div class="background-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <div class="cursor"></div>
+    <div class="spotlight"></div>
+
+
+    <header>
+
         <div class="container">
+
+            <nav class="navbar">
+
+                <div class="logo">
+                    UtilityHub
+                </div>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="#apps">
+                            Apps
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#future">
+                            Roadmap
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about">
+                            About
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="menu-btn">
+                    ☰
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="hero reveal">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <h1>
+                        Free Community Tools
+                    </h1>
+
+                    <p>
+                        Secure your data.
+                        Manage your finances.
+                        Optimize your media.
+                    </p>
+
+                    <a
+                        href="#apps"
+                        class="hero-btn">
+
+                        Explore Apps
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="stats">
+
+            <div class="stat-box">
+
+                <div
+                    id="tool-count"
+                    class="counter"
+                    data-target="3">
+
+                    0
+
+                </div>
+
+                <p>
+                    Live Tools
+                </p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <div
+                    class="counter"
+                    data-target="100">
+
+                    0
+
+                </div>
+
+                <p>
+                    % Free
+                </p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <div id="system-status">
+
+                    Online
+
+                </div>
+
+                <p>
+                    Platform Status
+                </p>
+
+            </div>
+
+        </section>
+
+        <section
+            id="apps"
+            class="apps reveal">
+
+            <div class="container">
+
+                <h2>
+                    Featured Applications
+                </h2>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search tools..."
+                >
+
+                <div
+                    id="apps-grid"
+                    class="apps-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="future"
+            class="future-apps reveal">
+
+            <div class="container">
+
+                <h2>
+                    More Tools Coming
+                </h2>
+
+                <div
+                    id="future-grid"
+                    class="future-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="about"
+            class="about reveal">
+
+            <div class="container">
+
+                <h2>
+                    About This Hub
+                </h2>
+
+                <p>
+
+                    A growing collection of free web applications
+                    built to help individuals, creators,
+                    and small businesses solve everyday problems.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="container">
+
+            <h3>
+                UtilityHub
+            </h3>
+
             <p>
-                Built for the community.
+
+                Community-driven web applications
+                built for everyone.
+
             </p>
+
+            <small>
+
+                Powered by DevineByte
+
+            </small>
+
         </div>
 
     </footer>
+
 
     <script src="/static/js/app.js"></script>
 
