@@ -13,6 +13,39 @@ window.addEventListener("load", () => {
     }, 800);
 
 });
+document
+.getElementById("search")
+
+.addEventListener(
+"keyup",
+
+e => {
+
+const value =
+e.target.value
+.toLowerCase();
+
+document
+.querySelectorAll(
+".app-card"
+)
+
+.forEach(card => {
+
+const text =
+card.innerText
+.toLowerCase();
+
+card.style.display =
+text.includes(value)
+
+? "block"
+
+: "none";
+
+});
+
+});
 const reveals =
 document.querySelectorAll(".reveal");
 
@@ -120,5 +153,112 @@ apps.forEach(app => {
     </article>
 
     `;
+
+});
+const cursor =
+document.querySelector(".cursor");
+
+window.addEventListener(
+    "mousemove",
+    e => {
+
+    cursor.style.left =
+    e.clientX + "px";
+
+    cursor.style.top =
+    e.clientY + "px";
+
+});
+const light =
+document.querySelector(
+".spotlight"
+);
+
+window.addEventListener(
+"mousemove",
+
+e => {
+
+light.style.left =
+e.clientX - 150 + "px";
+
+light.style.top =
+e.clientY - 150 + "px";
+
+});
+
+document
+.querySelectorAll(".app-card")
+
+.forEach(card => {
+
+card.addEventListener(
+
+"mousemove",
+
+e => {
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left;
+
+const y =
+e.clientY - rect.top;
+
+const rotateX =
+(y - rect.height/2) / 20;
+
+const rotateY =
+(rect.width/2 - x) / 20;
+
+card.style.transform =
+`
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+`;
+
+});
+
+card.addEventListener(
+"mouseleave",
+
+() => {
+
+card.style.transform =
+"rotateX(0) rotateY(0)";
+
+});
+
+});
+document
+.querySelectorAll(".counter")
+
+.forEach(counter => {
+
+const target =
++counter.dataset.target;
+
+let current = 0;
+
+const update = () => {
+
+if(current < target){
+
+current++;
+
+counter.innerText =
+current;
+
+requestAnimationFrame(
+update
+);
+
+}
+
+};
+
+update();
 
 });
