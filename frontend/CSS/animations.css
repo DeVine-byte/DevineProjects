@@ -51,6 +51,47 @@
 
     animation: floatBlob3 18s ease infinite;
 }
+
+
+.hero-btn {
+
+    transition:
+        .3s ease;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+.hero-btn:hover {
+
+    transform:
+        scale(1.05);
+
+    box-shadow:
+        0 0 30px
+        rgba(70,194,255,.4);
+}
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(80px);
+
+    transition:
+        all .8s ease;
+}
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
 .app-card::before {
 
     content: "";
@@ -84,27 +125,6 @@
     animation:
         iconFloat
         4s ease-in-out infinite;
-}
-.hero-btn {
-
-    transition:
-        .3s ease;
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-}
-
-.hero-btn:hover {
-
-    transform:
-        scale(1.05);
-
-    box-shadow:
-        0 0 30px
-        rgba(70,194,255,.4);
 }
 
 @keyframes iconFloat {
