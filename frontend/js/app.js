@@ -1,81 +1,43 @@
 
 // Loader
 
-function hideLoader() {
-    const loader = document.getElementById("loader");
+window.addEventListener("load", () => {
 
-    if (!loader) return;
+    const loader =
+    document.getElementById("loader");
 
     loader.style.opacity = "0";
 
     setTimeout(() => {
+
         loader.style.display = "none";
+
     }, 800);
-}
 
-window.addEventListener("load", hideLoader);
+});
 
-
-// Mobile Navigation
-
-
-function initMobileMenu() {
-    const menuBtn = document.querySelector(".menu-btn");
-    const navLinks = document.querySelector(".nav-links");
-
-    if (!menuBtn || !navLinks) return;
-
-    menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
-}
-
-
-// Search
-
-function initSearch() {
-    const search = document.getElementById("search");
-
-    if (!search) return;
-
-    search.addEventListener("keyup", (e) => {
-
-        const value = e.target.value.toLowerCase();
-
-        document
-            .querySelectorAll(".app-card")
-            .forEach(card => {
-
-                const text =
-                    card.innerText.toLowerCase();
-
-                card.style.display =
-                    text.includes(value)
-                        ? "block"
-                        : "none";
-
-            });
-
-    });
-}
-
-
-// Reveal Animation
+// Scroll Reveal
 
 function revealSections() {
 
-    document
-        .querySelectorAll(".reveal")
-        .forEach(section => {
+    const sections =
+    document.querySelectorAll(".reveal");
 
-            const top =
-                section.getBoundingClientRect().top;
+    sections.forEach(section => {
 
-            if (top < window.innerHeight - 100) {
-                section.classList.add("active");
-            }
+        const top =
+        section.getBoundingClientRect().top;
 
-        });
+        if (
+            top <
+            window.innerHeight - 100
+        ) {
+            section.classList.add(
+                "active"
+            );
+        }
+
+    });
 
 }
 
@@ -84,40 +46,143 @@ window.addEventListener(
     revealSections
 );
 
+revealSections();
 
-// Render Apps
+// Cursor
 
-function renderApps() {
+const cursor =
+document.querySelector(".cursor");
 
-    const appGrid =
-        document.getElementById(
-            "apps-grid"
-        );
+window.addEventListener(
+    "mousemove",
+    e => {
 
-    if (!appGrid || !apps) return;
+        if(cursor){
 
-    appGrid.innerHTML = "";
+            cursor.style.left =
+            e.clientX + "px";
+
+            cursor.style.top =
+            e.clientY + "px";
+
+        }
+
+    }
+);
+
+// Spotlight
+
+const spotlight =
+document.querySelector(
+".spotlight"
+);
+
+window.addEventListener(
+    "mousemove",
+
+    e => {
+
+        if(spotlight){
+
+            spotlight.style.left =
+            e.clientX - 150 + "px";
+
+            spotlight.style.top =
+            e.clientY - 150 + "px";
+
+        }
+
+    }
+
+);
+
+// Counters
+
+document
+.querySelectorAll(".counter")
+.forEach(counter => {
+
+    const target =
+    +counter.dataset.target;
+
+    let current = 0;
+
+    const update = () => {
+
+        if(current < target){
+
+            current++;
+
+            counter.innerText =
+            current;
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+    };
+
+    update();
+
+});
+
+// Load Apps
+
+async function loadApps(){
+
+    const response =
+    await fetch("/api/apps");
+
+    const apps =
+    await response.json();
+
+    const grid =
+    document.getElementById(
+        "apps-grid"
+    );
+
+    if(!grid){
+        return;
+    }
+
+    grid.innerHTML = "";
 
     apps.forEach(app => {
 
-        appGrid.innerHTML += `
+        grid.innerHTML += `
 
-        <article class="app-card reveal">
+        <article class="app-card">
+
+            <div class="app-icon">
+
+                ${app.icon}
+
+            </div>
 
             <span class="category">
+
                 ${app.category}
+
             </span>
 
             <h3>
+
                 ${app.name}
+
             </h3>
 
             <p>
+
                 ${app.description}
+
             </p>
 
             <a href="${app.url}">
+
                 Launch App →
+
             </a>
 
         </article>
@@ -126,194 +191,142 @@ function renderApps() {
 
     });
 
-}
-
-
-// Categories
-
-
-function loadCategories() {
-
-    if (!apps) return;
-
-    const categories = [
-        ...new Set(
-            apps.map(
-                app => app.category
-            )
-        )
-    ];
-
-    console.log(categories);
+    enableCardTilt();
 
 }
 
+// Search
 
-// Custom Cursor
+document
+.addEventListener(
+"input",
 
+e => {
 
-function initCursor() {
+if(
+e.target.id === "search"
+){
 
-    const cursor =
-        document.querySelector(".cursor");
+const value =
+e.target.value
+.toLowerCase();
 
-    if (!cursor) return;
+document
+.querySelectorAll(
+".app-card"
+)
 
-    window.addEventListener(
-        "mousemove",
-        e => {
+.forEach(card => {
 
-            cursor.style.left =
-                e.clientX + "px";
+const text =
+card.innerText
+.toLowerCase();
 
-            cursor.style.top =
-                e.clientY + "px";
+card.style.display =
+text.includes(value)
 
-        }
-    );
+? ""
 
-}
+: "none";
 
-
-// Spotlight
-
-
-function initSpotlight() {
-
-    const light =
-        document.querySelector(
-            ".spotlight"
-        );
-
-    if (!light) return;
-
-    window.addEventListener(
-        "mousemove",
-        e => {
-
-            light.style.left =
-                e.clientX - 150 + "px";
-
-            light.style.top =
-                e.clientY - 150 + "px";
-
-        }
-    );
+});
 
 }
 
-
-// 3D Card Tilt
-
-
-function initCardTilt() {
-
-    document
-        .querySelectorAll(".app-card")
-        .forEach(card => {
-
-            card.addEventListener(
-                "mousemove",
-                e => {
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-                    const x =
-                        e.clientX - rect.left;
-
-                    const y =
-                        e.clientY - rect.top;
-
-                    const rotateX =
-                        (y - rect.height / 2) / 20;
-
-                    const rotateY =
-                        (rect.width / 2 - x) / 20;
-
-                    card.style.transform =
-                        `rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)`;
-
-                }
-            );
-
-            card.addEventListener(
-                "mouseleave",
-                () => {
-
-                    card.style.transform =
-                        "rotateX(0) rotateY(0)";
-
-                }
-            );
-
-        });
-
 }
-
-
-// Counter Animation
-
-function initCounters() {
-
-    document
-        .querySelectorAll(".counter")
-        .forEach(counter => {
-
-            const target =
-                +counter.dataset.target;
-
-            let current = 0;
-
-            function update() {
-
-                if (current < target) {
-
-                    current++;
-
-                    counter.innerText =
-                        current;
-
-                    requestAnimationFrame(
-                        update
-                    );
-
-                }
-
-            }
-
-            update();
-
-        });
-
-}
-
-
-// App Initialization
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        renderApps();
-
-        loadCategories();
-
-        initMobileMenu();
-
-        initSearch();
-
-        initCursor();
-
-        initSpotlight();
-
-        initCardTilt();
-
-        initCounters();
-
-        revealSections();
-
-    }
 );
+
+// Hero Button
+
+const heroBtn =
+document.querySelector(
+".hero-btn"
+);
+
+if(heroBtn){
+
+heroBtn.addEventListener(
+"click",
+
+() => {
+
+document
+.getElementById(
+"apps"
+)
+.scrollIntoView({
+behavior:
+"smooth"
+});
+
+});
+
+}
+
+// Card Tilt
+
+function enableCardTilt(){
+
+document
+.querySelectorAll(
+".app-card"
+)
+
+.forEach(card => {
+
+card.addEventListener(
+"mousemove",
+
+e => {
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+e.clientX -
+rect.left;
+
+const y =
+e.clientY -
+rect.top;
+
+const rotateX =
+(y -
+rect.height / 2)
+/
+20;
+
+const rotateY =
+(rect.width / 2
+-
+x)
+/
+20;
+
+card.style.transform =
+`
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-8px)
+`;
+
+});
+
+card.addEventListener(
+"mouseleave",
+
+() => {
+
+card.style.transform =
+"rotateX(0) rotateY(0)";
+
+});
+
+});
+
+}
+
+// Initialize
+
+loadApps();
+                
