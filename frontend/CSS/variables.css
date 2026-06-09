@@ -1,0 +1,21 @@
+:root {
+    --bg-primary: #050816;
+    --bg-secondary: #0d111f;
+
+    --card-bg: rgba(255, 255, 255, 0.05);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a8b2d1;
+
+    --border: rgba(255,255,255,0.08);
+
+    --accent-1: #6d5dfc;
+    --accent-2: #46c2ff;
+
+    --shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    --radius: 24px;
+
+    --transition: 0.3s ease;
+}
