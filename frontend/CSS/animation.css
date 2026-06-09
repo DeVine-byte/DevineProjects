@@ -51,6 +51,70 @@
 
     animation: floatBlob3 18s ease infinite;
 }
+.app-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+
+    top: 0;
+    left: -150%;
+
+    transition: .8s;
+}
+
+.app-card:hover::before {
+    left: 100%;
+}
+.app-icon {
+
+    font-size: 3rem;
+
+    animation:
+        iconFloat
+        4s ease-in-out infinite;
+}
+.hero-btn {
+
+    transition:
+        .3s ease;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+.hero-btn:hover {
+
+    transform:
+        scale(1.05);
+
+    box-shadow:
+        0 0 30px
+        rgba(70,194,255,.4);
+}
+
+@keyframes iconFloat {
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+
+}
 
 @keyframes floatBlob1 {
     50% {
