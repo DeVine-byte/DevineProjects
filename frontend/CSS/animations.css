@@ -72,6 +72,43 @@
         fadeUp
         2s ease;
 }
+#loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #050816;
+
+    z-index: 9999;
+
+    transition: .8s;
+}
+
+.loader-logo {
+
+    font-size: 2rem;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    50% {
+
+        transform: scale(1.1);
+
+        opacity: .7;
+
+    }
+
+}
 
 @keyframes fadeUp {
 
