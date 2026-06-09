@@ -1,23 +1,228 @@
-@keyframes floatBlob1 {
-    50% {
-        transform:
-            translate(100px,80px)
-            scale(1.2);
+
+
+@media (max-width: 1024px) {
+
+    .hero h1 {
+        font-size: 3.2rem;
     }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .apps-grid,
+    .future-grid {
+
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(280px, 1fr)
+            );
+
+    }
+
 }
 
-@keyframes floatBlob2 {
-    50% {
-        transform:
-            translate(-100px,50px)
-            scale(.8);
+
+
+@media (max-width: 768px) {
+    
+    .menu-btn {
+
+        display: block;
+
     }
+    .blob {
+
+        width: 250px;
+
+        height: 250px;
+
+        filter: blur(80px);
+
+    }
+
+    .nav-links {
+
+        display: none;
+
+        flex-direction: column;
+
+        width: 100%;
+
+    }
+
+    .nav-links.active {
+
+        display: flex;
+
+    }
+
+    .navbar {
+
+        flex-direction: column;
+
+        gap: 1rem;
+
+        padding: 1rem 0;
+
+    }
+
+    .nav-links {
+
+        gap: 1rem;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+    .hero {
+
+        min-height: 70vh;
+
+        padding: 3rem 0;
+
+    }
+
+    .hero h1 {
+
+        font-size: 2.8rem;
+
+        line-height: 1.2;
+
+    }
+
+    .hero p {
+
+        font-size: 1rem;
+
+        padding: 0 1rem;
+
+    }
+
+    .hero-btn {
+
+        width: 220px;
+
+        padding: 1rem;
+    }
+
+    .apps,
+    .future-apps,
+    .about {
+
+        padding: 70px 0;
+
+    }
+
+    .apps h2,
+    .future-apps h2,
+    .about h2 {
+
+        font-size: 2rem;
+
+    }
+
+    .app-card {
+
+        padding: 1.5rem;
+
+    }
+
 }
 
-@keyframes floatBlob3 {
-    50% {
-        transform:
-            translate(50px,-100px)
-            scale(1.1);
+
+
+@media (max-width: 480px) {
+
+    .container {
+
+        width: 94%;
+
     }
+
+    .logo {
+
+        font-size: 1.3rem;
+
+    }
+
+    .nav-links {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: .8rem;
+
+    }
+
+    .hero h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+    .hero p {
+
+        font-size: .95rem;
+
+    }
+
+    .hero-btn {
+
+        width: 100%;
+
+    }
+
+    .apps-grid,
+    .future-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .app-card {
+
+        padding: 1.3rem;
+
+    }
+
+    .app-icon {
+
+        font-size: 2.5rem;
+
+    }
+
+    .category {
+
+        font-size: .7rem;
+
+    }
+
+    footer {
+
+        font-size: .9rem;
+
+        padding: 2rem 1rem;
+
+    }
+
+}
+@media (hover: none) {
+
+    .app-card:hover {
+
+        transform: none;
+
+    }
+    cursor,
+    .spotlight {
+
+        display: none;
+
+    }
+
 }
