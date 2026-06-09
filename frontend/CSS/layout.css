@@ -103,6 +103,27 @@
     font-size: 1rem;
 }
 
+.category {
+
+    display: inline-block;
+
+    padding:
+        .4rem
+        .8rem;
+
+    margin-bottom:
+        1rem;
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size:
+        .8rem;
+}
+
 .apps {
     padding: 100px 0;
 }
