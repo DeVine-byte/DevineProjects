@@ -13,6 +13,23 @@ window.addEventListener("load", () => {
     }, 800);
 
 });
+const menuBtn =
+document.querySelector(".menu-btn");
+
+const navLinks =
+document.querySelector(".nav-links");
+
+menuBtn.addEventListener(
+"click",
+
+() => {
+
+navLinks.classList.toggle(
+"active"
+);
+
+});
+
 document
 .getElementById("search")
 
