@@ -17,6 +17,16 @@ window.addEventListener("scroll", () => {
     });
 
 });
+
+const categories =
+[...new Set(
+apps.map(
+app => app.category
+)
+)];
+
+console.log(categories);
+
 const apps = [
 
     {
