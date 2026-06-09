@@ -1,3 +1,5 @@
+#import modules 
+
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -13,6 +15,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
+# Static Files
+
+
 app.mount(
     "/static",
     StaticFiles(directory="frontend"),
@@ -24,43 +30,90 @@ app.mount(
 async def home():
     return FileResponse("frontend/index.html")
 
-APPS = [
-    {
-        "name": "Keyholder",
-        "url": "/keyholder",
-        "category": "Security",
-        "status": "Live",
-        "description":
-            "Security-focused password management platform."
-    },
-    {
-        "name": "Expense Tracker",
-        "url": "/finance",
-        "category": "Finance",
-        "status": "Live",
-        "description":
-            "Personal finance dashboard with analytics."
-    },
-    {
-        "name": "Video Compressor",
-        "url": "/videoCompressor",
-        "category": "Media",
-        "status": "Live",
-        "description":
-            "FFmpeg-powered video compression."
-    }
-]
 
+# App Registry
+
+REGISTERED_APPS = []
+
+
+def register_app(
+    *,
+    path: str,
+    application,
+    name: str,
+    description: str,
+    category: str,
+    icon: str,
+    wsgi: bool = False
+):
+
+    if wsgi:
+        app.mount(
+            path,
+            WSGIMiddleware(application)
+        )
+    else:
+        app.mount(
+            path,
+            application
+        )
+
+    REGISTERED_APPS.append(
+        {
+            "name": name,
+            "url": path,
+            "description": description,
+            "category": category,
+            "icon": icon,
+            "status": "Live"
+        }
+    )
+
+
+# Register Community Apps
+
+register_app(
+    path="/keyholder",
+    application=keyholder_app,
+    name="Keyholder",
+    description="Security-focused password management platform.",
+    category="Security",
+    icon="🔐",
+    wsgi=True
+)
+
+register_app(
+    path="/finance",
+    application=expense_tracker_app,
+    name="Expense Tracker",
+    description="Personal finance dashboard with analytics.",
+    category="Finance",
+    icon="📊"
+)
+
+register_app(
+    path="/videoCompressor",
+    application=vid_app,
+    name="Video Compressor",
+    description="FFmpeg-powered video compression.",
+    category="Media",
+    icon="🎥",
+    wsgi=True
+)
+
+
+# APIs
 
 @app.get("/api/apps")
 async def get_apps():
-    return APPS
+    return REGISTERED_APPS
 
 
 @app.get("/api/stats")
 async def get_stats():
+
     return {
-        "tools": len(APPS),
+        "tools": len(REGISTERED_APPS),
         "free": True,
         "status": "Operational"
     }
@@ -68,24 +121,12 @@ async def get_stats():
 
 @app.get("/health")
 async def health():
+
     return {
         "hub": "online",
-        "keyholder": "online",
-        "finance": "online",
-        "videoCompressor": "online"
+        "services": len(REGISTERED_APPS),
+        "apps": [
+            app["name"]
+            for app in REGISTERED_APPS
+        ]
     }
-
-app.mount(
-    "/keyholder",
-    WSGIMiddleware(keyholder_app)
-)
-
-app.mount(
-    "/finance",
-    expense_tracker_app
-)
-
-app.mount(
-    "/videoCompressor",
-    WSGIMiddleware(vid_app)
-)
